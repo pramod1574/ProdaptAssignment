@@ -13,7 +13,10 @@ def process_csv(*args):
             for lines in csv_reader:
                 key += 1
                 dataset[key] = lines
-    #print(dataset)
+    # print(dataset)
+
+    if not dataset:
+        return "Files are empty or no input files provided"
 
     # Processing values from dataset and segregate them properly
     colnames = ['timestamp', 'type', 'amount', 'euro', 'cents', 'from', 'to']
@@ -74,6 +77,6 @@ def process_csv(*args):
         csv_writer = csv.writer(fw)
         csv_writer.writerow(colnames)
         csv_writer.writerows(final_lis)
+    return "success"
 
-
-process_csv('bank1.csv', 'bank2.csv', 'bank3.csv')
+# process_csv('bank1.csv', 'bank2.csv', 'bank3.csv')
